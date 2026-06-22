@@ -1,0 +1,212 @@
+{
+  "asOf": "2026-06-22",
+  "competitors": [
+    {
+      "name": "PostHog LLM Analytics (AI Observability)",
+      "one_liner": "LLM observability built into the same PostHog project as product analytics, session replay, feature flags, and experiments — capturing traces, generations, spans, cost, latency, and evals as regular PostHog events.",
+      "key_features": [
+        "Tracing: traces ($ai_trace_id) grouping spans and generations; trace-level debugging of multi-step LLM/agent flows",
+        "Generations ($ai_generation): captures model, provider, input/output, token counts, latency, and per-call cost",
+        "Spans: individual operations nested within a trace for step-by-step visibility",
+        "Cost tracking: auto-calculated from input/output tokens per model (plus per-request and per-web-search components); breakdown by model, user, conversation, and organization",
+        "Latency and error-rate monitoring per model/provider",
+        "Evaluations: LLM-as-a-judge (tone, helpfulness, hallucination, toxicity, jailbreak) and code-based (Hog) deterministic checks (format, keywords, length, cost thresholds), returning pass/fail with reasoning; first 100 judge runs free, then bring-your-own API key",
+        "Playground: recreate or craft new traces to inspect model behavior",
+        "AI Observability dashboard: out-of-the-box overview of usage by model, latency, cost, etc.",
+        "Clusters (launched Mar 13, 2026): automatic behavioral clustering of LLM traces to surface usage patterns at scale",
+        "Conversation capture: full inputs, outputs, and tokens",
+        "SDK/framework integrations: OpenAI, Anthropic Claude, Cohere, Google Gemini, plus LangChain and Vercel AI SDK"
+      ],
+      "positioning": "Targets engineering and product teams building AI/LLM features who don't want a standalone observability silo. Pitched as ~10x cheaper than dedicated LLM observability tools, with the core differentiator that AI observability lives natively in the same project as PostHog's other products — so AI usage data joins product analytics (funnels/retention on AI features), session replay (watch the AI UX), feature flags (gate models/prompts), experiments (A/B test prompts/models against real behavior metrics), and error tracking (model failures, timeouts, rate limits).",
+      "pricing": "Usage-based, pay-per-product, generous free tier (PostHog says 90%+ of companies use it free). LLM analytics: first 100,000 events/month free, then $0.00006 per event. Evaluations: first 100 LLM-judge runs free, then bring your own OpenAI/Anthropic/Gemini API key. Per-product billing limits can be set so spend stays capped.",
+      "posthog_counter": "Honest angle: every other LLM observability tool (Langfuse, LangSmith, Helicone, Arize) is a separate system you have to stitch to your product data. PostHog's LLM observability is the same events in the same project as product analytics, session replay, feature flags, and experiments — so you can go from a costly/slow generation straight to the user's session replay, the funnel it broke, or A/B test a fix behind a flag, without exporting data or joining tools. Plus a real free tier (100k events/mo) and roughly 10x lower per-event cost. Only claim the same-project integration and pricing where true; avoid overstating eval depth versus eval-specialist competitors.",
+      "key_features_note": "n/a",
+      "recent_2025_2026": "LLM Analytics matured into a full product through 2025-2026. Clusters launched Mar 13, 2026 — automatic behavioral clustering of traces, live for all users with LLM Analytics enabled with no extra config. Evaluations (LLM-as-a-judge + code-based Hog) added with a 100 free judge runs trial. Continued expansion of framework integrations (LangChain, Vercel AI SDK) and the playground.",
+      "pricing_note": "n/a",
+      "sources": [
+        "https://posthog.com/llm-analytics",
+        "https://posthog.com/docs/llm-analytics",
+        "https://posthog.com/docs/llm-analytics/generations",
+        "https://posthog.com/docs/llm-analytics/traces",
+        "https://posthog.com/docs/llm-analytics/evaluations",
+        "https://posthog.com/docs/llm-analytics/calculating-costs",
+        "https://posthog.com/pricing",
+        "https://www.createwith.com/tool/posthog/updates/posthog-launches-clusters-in-llm-analytics-to-decode-ai-app-behavior",
+        "https://posthog.com/blog/llm-analytics-clustering-how-it-works"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Datadog LLM Observability (Agent Observability)",
+      "one_liner": "Enterprise LLM/agent observability bolted onto Datadog's APM platform — tracing, evaluations, and cost monitoring for AI apps, correlated with the rest of your infrastructure stack.",
+      "key_features": [
+        "End-to-end tracing of LLM/agent requests: each request is a trace, with spans per agent step/tool call/retrieval, capturing input/output, latency, token usage, and errors",
+        "Auto-instrumentation via a single tracer (Python, Node.js, Java) plus OpenTelemetry and HTTP API; auto-instruments common LLM providers and frameworks (OpenAI, Anthropic, Gemini, Vertex AI, Bedrock, LangChain, CrewAI, Pydantic, Strands)",
+        "Evaluations: built-in/managed evals, custom LLM-as-a-judge (natural-language eval logic), external evals via API, and human-review annotation queues",
+        "Quality/safety/privacy checks: hallucination detection, prompt-injection detection, and PII/sensitive-data detection via built-in Sensitive Data Scanner (no separate purchase)",
+        "Cost & token monitoring: estimated cost per request across 800+ models using providers' public pricing; aggregated spend insights",
+        "Experimentation: production-derived versioned datasets, side-by-side prompt/model/config comparison, execution-graph inspection",
+        "Full-stack correlation: ties agent behavior to APM services, infrastructure, and real-user sessions (RUM)",
+        "Enterprise controls: RBAC, sensitive-data redaction, HIPAA-compliant controls"
+      ],
+      "positioning": "Targets enterprises and fast-growing AI teams already (or likely) on Datadog — AI engineers, data scientists, SRE/DevOps, and eng leadership. Pitch: AI agents are first-class application components, so monitor them in the same platform as the rest of your stack rather than in a standalone LLM tool. Leverages Datadog's APM incumbency (\"trusted by 60% of the Fortune 500\") and full-stack correlation as the moat.",
+      "pricing": "Free tier: up to 40K LLM spans/month, 15-day retention. Pro: $160/month including 100K LLM spans, on-demand overage beyond that. Bills only on LLM spans (tool/embedding/retrieval/agent spans free). Per-span overage rate not confirmed on official pricing page.",
+      "recent_2025_2026": "Datadog has rebranded/expanded the product toward 'Agent Observability' (agentic AI focus), adding execution-graph inspection of tool decisions, custom LLM-as-a-judge evaluations, annotation queues for human review, production-derived versioned datasets for experimentation, and support for agent frameworks like CrewAI, Pydantic, and Strands Agents. Estimated-cost coverage expanded to 800+ models. (Funding N/A — Datadog is public, NASDAQ: DDOG.)",
+      "posthog_counter": "Datadog's value depends on you being an enterprise APM/infra customer; its strength is correlating AI traces with services and infrastructure. PostHog's honest counter: AI observability lives in the same project as product analytics, session replay, feature flags, and experiments — so you connect an LLM trace to the actual user, their session recording, and the product behavior/conversion it drove, not just to backend infra. That's a product-and-user lens (was the AI output useful, did it move retention/conversion, what was the user doing) rather than Datadog's ops-and-infra lens. PostHog is also typically far cheaper for product teams and startups with a generous free tier, versus Datadog's reputation for surprise enterprise bills. Caveat: do not claim PostHog matches Datadog's deep infra/APM correlation or enterprise compliance depth — that's genuinely Datadog's turf.",
+      "sources": [
+        "https://www.datadoghq.com/products/ai/agent-observability/",
+        "https://docs.datadoghq.com/llm_observability/",
+        "https://docs.datadoghq.com/llm_observability/evaluations/",
+        "https://docs.datadoghq.com/llm_observability/monitoring/cost/",
+        "https://www.datadoghq.com/pricing/",
+        "https://www.datadoghq.com/product/ai/llm-observability/2/"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "name": "LangSmith (by LangChain)",
+      "one_liner": "LangSmith is LangChain's commercial LLM/agent observability and evals platform for tracing, evaluating, and managing AI applications in development and production.",
+      "key_features": [
+        "Tracing: end-to-end traces of LLM/agent runs capturing every LLM call, tool use, and retrieval step, with full agent-trajectory visibility",
+        "Evaluations: offline dataset evals plus online LLM-as-judge evaluators, human annotation queues, heuristic checks, pairwise comparisons, and custom Python/TS evaluators that can score intermediate agent decisions",
+        "Prompt management: Prompt Playground, prompt versioning as a first-class asset, cross-model/version comparison, and an AI agent ('Polly') to auto-improve prompts",
+        "Cost & latency monitoring: unified cost view across the full agent workflow (LLM calls, retrieval, tool execution, external API spend) plus latency tracking",
+        "Multi-language SDKs: Python, TypeScript, Go, Java; integrates with OpenAI SDK, Anthropic SDK, Vercel AI SDK, LlamaIndex, and custom stacks (not just LangChain)",
+        "Deployment/agent ops: expanded into agent operations including LangSmith Fleet (formerly Agent Builder) for deploying LangChain/LangGraph agents",
+        "Deployment options: managed cloud, BYOC (bring-your-own-cloud), and self-hosted on Kubernetes (AWS/GCP/Azure) gated to Enterprise"
+      ],
+      "positioning": "Targets AI/ML engineering teams building LLM apps and agents — strongest pull for 'all-in-LangChain' shops wanting native, deep integration for deploying LangChain/LangGraph agents, but positioned as framework-agnostic observability for any stack. Enterprise tier aimed at security-conscious orgs needing self-hosting, SSO, RBAC, and data residency. Pitched as 'the platform for agent engineering' for continuous testing and improvement using live production data.",
+      "pricing": "Three tiers (verified on langchain.com/pricing): Developer = $0/seat, max 1 seat, up to 5,000 base traces/month, 14-day retention, pay-as-you-go overage. Plus = $39/seat/month, unlimited seats, 10,000 base traces/month included, 14-day retention, includes 1 free dev-sized deployment. Enterprise = custom pricing with self-hosted/hybrid hosting, custom SSO, RBAC, dedicated support. Add-on usage costs: base trace upgrade $2.50/1k traces, extended 400-day retention $5.00/1k traces, deployment runs $0.005/run, LangSmith Engine $1.50/LCU, plus per-second sandbox CPU/memory/storage. A 'trace' = one end-to-end pipeline execution (may bundle many LLM calls).",
+      "posthog_counter": "LangSmith is a point solution: it tells you what your LLM/agent did, but it sits in a silo separate from the rest of your product. PostHog's honest edge is that AI/LLM observability lives in the same project as product analytics, session replay, feature flags, and experiments — so you can trace an LLM call back to the actual user session that triggered it, tie AI behavior to downstream product metrics and retention, gate/roll out AI features with flags, and A/B test prompts/models against real conversion outcomes, all without stitching tools together. LangSmith also tends to land best when you're already committed to the LangChain/LangGraph framework, whereas PostHog is framework-agnostic by default and avoids steering you toward a specific agent stack. Caveat: LangSmith offers deeper agent-trajectory evals (annotation queues, LLM-as-judge, pairwise) and tighter LangGraph deployment integration — don't claim parity on depth of agent evaluation tooling.",
+      "recent_2025_2026": "Oct 2025: LangChain raised a $125M Series B at a $1.25B valuation (led by IVP; Sequoia, Benchmark, CapitalG, Datadog, Databricks, ServiceNow/Workday/Cisco ventures, etc.), becoming a unicorn — positioned around 'agent engineering' with LangSmith as the commercial centerpiece. Reported ~$16M ARR. Commercial LangSmith monthly trace volume reportedly 12x'd year over year. 2026 expansion beyond pure observability into an agent-ops stack: LangSmith Fleet (formerly Agent Builder) for deployment, unified full-workflow cost view (LLM + retrieval + tools + external API), and AWS Marketplace availability for enterprise procurement.",
+      "sources": [
+        "https://www.langchain.com/pricing",
+        "https://www.langchain.com/langsmith/observability",
+        "https://docs.langchain.com/langsmith/observability",
+        "https://www.langchain.com/langsmith/evaluation",
+        "https://docs.langchain.com/langsmith/self-hosted",
+        "https://www.langchain.com/blog/series-b",
+        "https://fortune.com/2025/10/20/exclusive-early-ai-darling-langchain-is-now-a-unicorn-with-a-fresh-125-million-in-funding/",
+        "https://siliconangle.com/2025/10/20/ai-agent-tooling-provider-langchain-raises-125m-1-25b-valuation/",
+        "https://langfuse.com/faq/all/langsmith-alternative"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Langfuse",
+      "one_liner": "Open-source LLM engineering platform for tracing, evals, and prompt management; acquired by ClickHouse in January 2026.",
+      "key_features": [
+        "LLM application tracing: captures full request lifecycle (LLM calls, retrieval, tool calls, custom logic) with timing, inputs/outputs, token usage and metadata",
+        "Token and cost tracking per trace/observation/model",
+        "Evals: LLM-as-a-judge, annotation queues, custom scores, and dataset-based experiments",
+        "Prompt management with versioning, plus a prompt playground for iteration",
+        "Datasets and experiments for systematic testing/regression of AI behavior",
+        "Custom dashboards and metrics over trace data (built on ClickHouse)",
+        "OpenTelemetry-native ingestion (went all-in on OTel in 2025) plus SDKs/integrations for OpenAI SDK, LangChain, LlamaIndex, LiteLLM and more",
+        "Self-hostable via Docker Compose / Kubernetes; fully MIT-licensed core (all product features open-sourced June 2025)"
+      ],
+      "positioning": "Targets AI/LLM engineers and developer teams who want an open-source, self-hostable, vendor-neutral observability and evaluation stack. Pitches itself as developer-first and OpenTelemetry-native, contrasting with closed/proprietary tools (e.g. LangSmith). Emphasizes data control via self-hosting plus a managed cloud option. Post-acquisition, positioned as the open-source AI-quality layer that pairs with ClickHouse's analytical engine for monitoring AI apps at scale.",
+      "pricing": "Freemium, usage-based on a 'billable unit' = any trace, observation (span/event/generation), or score ingested. Cloud tiers: Hobby free (50k units/mo, 30-day retention, 2 users); Core $29/mo (100k units, 90-day retention, unlimited users, overage $8/100k); Pro $199/mo (100k units, 3-yr retention, SOC2/ISO27001, BAA available; optional Teams add-on +$300/mo for SSO/RBAC); Enterprise $2,499/mo (audit logs, SCIM, SLAs, dedicated support). Graduated overage falls from $8/100k to $6/100k at 50M+ units. Self-hosting is free and open source (MIT). Discounts for startups (50% off yr 1), OSS, nonprofits, research.",
+      "posthog_counter": "Langfuse is a point solution: it tells you what your LLM calls did, but the traces live in a separate tool from where you actually measure product impact. PostHog's honest edge is that AI/LLM observability sits in the same project as product analytics, session replay, feature flags, and experiments — so you can go from an LLM trace to the user's session recording, tie AI behavior to a feature flag rollout or A/B experiment, and connect model cost/latency to real retention and conversion metrics without exporting data or stitching tools together. Caveat to stay honest: Langfuse is more mature/deep on pure LLM-engineering workflows (annotation queues, prompt versioning/playground, dataset experiments) and is fully open-source and self-hostable for teams that require that; PostHog should compete on the unified-data-and-product-context story, not claim deeper standalone eval tooling. Also fair to note Langfuse is now owned by ClickHouse (a database vendor), tightening it to that ecosystem.",
+      "recent_2025_2026": "June 2025: open-sourced all product features under MIT (LLM-as-a-judge, annotation queues, prompt experiments, playground). 2025: went all-in on OpenTelemetry for observability; grew teams in Berlin and SF. Jan 16, 2026: acquired by ClickHouse (alongside ClickHouse's $400M Series D led by Dragoneer that tripled its valuation to ~$15B). Langfuse states it stays 100% open-source/MIT and self-hostable with no licensing changes, Cloud keeps running as-is, and roadmap is unchanged. Company had raised ~$4.5M total prior (Sep 2023 $4M seed from Lightspeed, La Família, YC W23); never closed a Series A — had term sheets but took the ClickHouse acquisition instead.",
+      "sources": [
+        "https://langfuse.com/pricing",
+        "https://langfuse.com/docs/observability/overview",
+        "https://siliconangle.com/2026/01/16/database-maker-clickhouse-raises-400m-acquires-ai-observability-startup-langfuse/",
+        "https://clickhouse.com/blog/clickhouse-acquires-langfuse-open-source-llm-observability",
+        "https://langfuse.com/blog/joining-clickhouse",
+        "https://clickhouse.com/blog/clickhouse-raises-400-million-series-d-acquires-langfuse-launches-postgres",
+        "https://langfuse.com/blog/announcing-our-seed-round",
+        "https://github.com/langfuse/langfuse",
+        "https://posthog.com/spotlight/startup-langfuse"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Helicone",
+      "one_liner": "Open-source (YC W23) LLM observability platform and AI gateway: change one base URL to proxy your LLM calls and get logging, cost/latency tracking, caching, and rate limiting. Acquired by Mintlify in March 2026 and now in maintenance mode (no new features).",
+      "key_features": [
+        "Proxy-based AI Gateway: change baseURL to ai-gateway.helicone.ai for one-line integration, routing across 100+ models with automatic fallbacks",
+        "Async logging option via OpenLLMetry SDKs (JS/TS, Python) for teams that don't want a proxy in the hot path",
+        "Cost and latency tracking per request, model, user, and session using Model Registry cost calculation",
+        "Response caching on Cloudflare edge for identical requests (zero token cost on hits; claims up to ~95% cost reduction in some cases)",
+        "Rate limiting, alerts, and custom metadata/property tagging",
+        "Tracing and session grouping for agents, chatbots, and pipelines",
+        "Prompt management with versioning, datasets, and a playground",
+        "HQL query language for ad-hoc analytics over logged requests",
+        "Evals and an Auto-Improve prompt-optimization tool",
+        "Self-hosting via Docker Compose / Helm; SOC-2, GDPR, HIPAA (Team+ tier)"
+      ],
+      "positioning": "Targets fast-growing AI engineering teams and developers who want LLM observability with the lowest possible integration friction. Core wedge is the proxy/gateway model (\"one line of code, change a URL\") rather than wrapping an SDK, plus open-source self-hosting for cost/control-conscious teams. Positioned as a lightweight, developer-first alternative to heavier observability suites (Langfuse, LangSmith, Datadog-style tools), emphasizing gateway features (routing, caching, fallbacks, rate limiting) alongside observability.",
+      "pricing": "Hobby: free (10K requests/mo, 7-day retention, 1 seat). Pro: $79/mo (unlimited seats, 1-month retention, usage-based overages). Team: $799/mo (3-month retention, SOC-2/HIPAA). Enterprise: custom (on-prem, SSO). Note pricing may change under Mintlify ownership.",
+      "posthog_counter": "Two honest angles. (1) Vendor risk/longevity: Helicone was acquired by Mintlify in March 2026 and the cloud product is in maintenance mode with no new feature development; PostHog is an independent, actively developed platform building AI observability as a first-class, ongoing product. (2) Single-platform breadth: PostHog's LLM analytics lives in the same project as product analytics, session replay, feature flags, experiments, and error tracking, so you can connect an LLM trace to the actual user session, the feature flag that gated it, and downstream product/conversion impact. Helicone is a focused observability + gateway tool and does not provide product analytics, replay, flags, or experimentation. Caveat to stay honest: Helicone's proxy gateway also does live routing, caching, and fallbacks (an inline control plane) which PostHog's analytics product does not, so don't claim feature parity on the gateway/routing side.",
+      "recent_2025_2026": "Launched its open-source AI Gateway (smart load balancing, caching, automatic failover, rate limiting, built-in observability) and an Auto-Improve prompt-optimization tool in 2025-2026; added integrations (LangGraph, Perplexity, Nebius) and a Go SDK. Reports processing ~14.2 trillion tokens. Most significant event: acquired by Mintlify, announced March 3, 2026; founders Justin Torre and Cole Gottdank joined Mintlify. Cloud service continues in maintenance mode (security updates, new model support, bug/perf fixes) but no new features; open source remains self-hostable. Total funding raised was modest (~$2M, incl. Y Combinator).",
+      "sources": [
+        "https://www.helicone.ai/",
+        "https://www.helicone.ai/pricing",
+        "https://www.helicone.ai/blog/joining-mintlify",
+        "https://www.mintlify.com/blog/mintlify-acquires-helicone",
+        "https://github.com/Helicone/helicone",
+        "https://docs.helicone.ai/guides/cookbooks/cost-tracking",
+        "https://chatforest.com/reviews/helicone-llm-observability-gateway/",
+        "https://www.ycombinator.com/companies/helicone"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Arize AI (and open-source Phoenix)",
+      "one_liner": "AI/ML observability and evaluation platform: open-source Phoenix for tracing/evals plus the enterprise Arize AX SaaS, both built for ML and AI engineers shipping LLM and agent apps to production.",
+      "key_features": [
+        "OpenTelemetry/OpenInference-based tracing of LLM and agent runs (prompts, retrievals, tool calls, outputs)",
+        "LLM-as-a-judge and code-based evaluators; evals return explanations by default; online (production) evals",
+        "Datasets & experiments: versioned example sets to test prompt/model/retrieval changes with measurable results",
+        "Prompt management via a Prompt IDE for iterating and comparing prompts",
+        "Human + LLM annotations for labeling success/failure",
+        "Alyx copilot (AX) for natural-language trace navigation and anomaly surfacing",
+        "Deep ML/CV observability heritage in AX (drift, data quality, performance monitoring), not just LLM",
+        "Vendor-agnostic, framework-agnostic; integrates with LlamaIndex, LangChain, and others; self-hostable Phoenix"
+      ],
+      "positioning": "Targets ML and AI engineers and ML platform teams, plus Fortune 500 enterprises. Phoenix is the free, open-source, self-hostable, notebook-friendly core for eval rigor across any framework; Arize AX is the enterprise SaaS adding scale, security (SOC2/HIPAA), SLAs, Alyx copilot, and unified GenAI + traditional ML/CV observability. Pitch is \"the gold standard for AI evaluation and observability\" with first-mover advantage and eval depth.",
+      "pricing": "AX Free: free (25k spans/mo, 1 GB/mo, 15-day retention). AX Pro: $50/mo (50k spans/mo, 10 GB/mo, 30-day retention; overage ~$0.0008/span, $3/GB). AX Enterprise: custom, third parties cite ~$60k/yr median. Usage/span-based, not per-seat. Phoenix OSS fully free, self-hosted, no caps.",
+      "recent_2025_2026": "Raised $70M Series C (announced Feb 2025), led by Adams Street Partners with M12 (Microsoft), Datadog, PagerDuty, OMERS Ventures, Sinewave, Industry Ventures, Archerman. Heavy 2025-2026 push into agent observability/evaluation and the Alyx in-product copilot; Phoenix remains the open-source flagship in a competitive field vs Langfuse and LangSmith.",
+      "posthog_counter": "Arize/Phoenix is a dedicated AI-observability silo: it tells you how your LLM/agent behaves but nothing about whether users actually adopt, convert, or retain. PostHog's honest edge is that LLM analytics lives in the same project as product analytics, session replay, feature flags, and experiments, so a team can connect a trace or eval regression to the real user session and downstream product metric, gate AI changes behind a flag, and A/B test prompts on conversion or retention without stitching tools together. For a startup or product team that wants AI quality tied to product outcomes (not a separate ML-engineering toolchain), PostHog is one bill, one identity graph, and one place to act. Be honest that Arize/Phoenix has deeper, more mature ML/CV observability, richer eval primitives, and a battle-tested open-source tracing stack; PostHog should compete on consolidation and product context, not on out-evaling Arize's eval engine.",
+      "sources": [
+        "https://arize.com/pricing/",
+        "https://arize.com/phoenix/",
+        "https://github.com/arize-ai/phoenix",
+        "https://arize.com/blog/arize-ai-raises-70m-series-c-to-build-the-gold-standard-for-ai-evaluation-observability/",
+        "https://www.prnewswire.com/news-releases/arize-ai-secures-70m-series-c-to-fix-ais-biggest-problem-making-llms-and-ai-agents-work-in-the-real-world-302381601.html",
+        "https://techcrunch.com/2025/02/20/arize-ai-hopes-it-has-first-mover-advantage-in-ai-observability/"
+      ],
+      "confidence": "high"
+    },
+    {
+      "name": "Braintrust",
+      "one_liner": "An LLM evaluation and AI observability platform for engineering/product teams building production AI, centered on evals, tracing, online scoring, and automated optimization.",
+      "key_features": [
+        "Evals: run experiments against datasets, side-by-side prompt/model comparison, scoring via LLM-as-judge, code, or humans",
+        "Observability/tracing: inspect every trace and tool call, search millions of logs, track latency, cost, and quality in real time (Brainstore purpose-built trace store)",
+        "Online scoring: auto-evaluate production traces asynchronously to catch regressions and surface edge cases",
+        "Topics: real-time classification of logs by task, sentiment, and issues; groups similar traces, writes labels back for filtering/dataset building",
+        "Loop: AI assistant that generates better prompts, scorers, and datasets and analyzes traces from natural-language instructions",
+        "Quality gates + GitHub Action: run evals on every PR and block merges that drop quality below a threshold",
+        "Prompt playgrounds and prompt management",
+        "Enterprise security: SOC 2 Type II, GDPR, HIPAA/BAA, SSO, RBAC, on-prem/hybrid deployment"
+      ],
+      "positioning": "Pitches itself as \"the AI observability platform for building quality AI products.\" Targets AI/ML and product engineering teams running LLMs and agents in production, from early-stage builders to enterprises. Emphasis is on the eval-to-production loop (build evals, ship, monitor, catch regressions) rather than generic ops monitoring. Notable customers cited: Vercel, Notion, Coursera, Dropbox, Replit, Cloudflare, Ramp, Navan, Graphite.",
+      "pricing": "Starter $0/mo (1GB data, 10k scores, 14-day retention); Pro $249/mo (5GB data, 50k scores, 30-day retention, RBAC); Enterprise custom. Usage-based on processed data + scores, unlimited users on all tiers.",
+      "recent_2025_2026": "Raised $80M Series B in February 2026 at an ~$800M valuation, led by ICONIQ with a16z, Greylock, Elad Gil, and Basecase participating. Funds earmarked for engineering, GTM expansion, new offices, and new products. Positioning as \"the observability layer for production AI.\" Active 2026 content/product push around agent observability, Topics, and Loop (AI eval assistant).",
+      "posthog_counter": "Braintrust is a standalone, AI-only tool: it tells you whether your AI output is good but lives in its own silo, billed separately on data/score volume, disconnected from how the AI actually affects your product and users. PostHog's honest edge is that LLM/AI observability sits in the same project as product analytics, session replay, feature flags, and experiments. So you can trace an LLM call, then watch the session replay of the user it happened to, see if they converted or churned, A/B test prompt/model changes with the same experimentation engine, and gate rollouts with the same feature flags. Braintrust optimizes eval scores; PostHog connects AI quality to real product outcomes in one place, with usage-based pricing across the whole stack rather than a separate AI tool subscription. (Note: for deep eval workflows like LLM-as-judge tooling and CI quality gates, Braintrust is more specialized than today's PostHog LLM analytics, so position on the unified-product-context angle, not feature-for-feature eval parity.)",
+      "sources": [
+        "https://www.braintrust.dev/",
+        "https://www.braintrust.dev/pricing",
+        "https://www.braintrust.dev/blog/announcing-series-b",
+        "https://siliconangle.com/2026/02/17/braintrust-lands-80m-series-b-funding-round-become-observability-layer-ai/",
+        "https://www.axios.com/pro/enterprise-software-deals/2026/02/17/ai-observability-braintrust-80-million-800-million",
+        "https://techfundingnews.com/braintrust-80m-series-b-iconiq-ai-observability/",
+        "https://www.braintrust.dev/articles/agent-observability-complete-guide-2026"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

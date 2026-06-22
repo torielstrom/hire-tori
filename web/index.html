@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tori 1.0 — Hire me (PostHog, Developer Marketer · AI observability)</title>
+  <meta name="description" content="I didn't send a résumé. I shipped a real AI feature, instrumented it in PostHog AI observability, and found its failure mode with evals. The whole thing is open source." />
+  <link rel="preconnect" href="https://us.i.posthog.com" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- PostHog. Yes, this page is instrumented in the product I want to market. -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording capturing isAutocaptureEnabled".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_VyxolBjFW9QqiA1IMSSpmoWKiIvsGCPHkuSdxxQ5ccm', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+</head>
+<body>
+  <main>
+    <!-- HERO -->
+    <section class="hero" data-section="hero">
+      <p class="kicker">Developer Marketer · AI observability</p>
+      <h1>Tori&nbsp;1.0 <span class="muted">— hire me.</span></h1>
+      <p class="lede">
+        I didn't send a résumé into the void. I shipped a real AI feature into my own
+        production pipeline, <strong>instrumented it in PostHog AI observability</strong>,
+        and used evals to find exactly where it broke. This page is the cover letter.
+        It's also <strong>tracking you in PostHog right now</strong> — scroll down, you'll
+        see it. (Transparent by default. Felt on-brand.)
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="#proof" data-cta="see_the_proof">See the proof →</a>
+        <a class="btn" href="https://github.com/torielstrom" data-cta="github" target="_blank" rel="noopener">The code</a>
+        <a class="btn" href="mailto:torielstrom@gmail.com?subject=Let's talk" data-cta="email">Email me</a>
+      </div>
+    </section>
+
+    <!-- THE MOVE -->
+    <section data-section="the_move">
+      <h2>I didn't apply. I shipped.</h2>
+      <p>
+        The role is Developer Marketer for AI observability. So instead of describing the
+        product, I used it. I built <strong>card-finish detection</strong> for my Pokémon
+        TCG pipeline (<a href="https://chasedex.com" target="_blank" rel="noopener">ChaseDex</a>) —
+        a vision model that reads whether a card is <em>normal</em>, <em>holo</em>, or
+        <em>reverse-holo</em>, which is what sets its price — and wired every model call
+        through PostHog AI observability. Then I evaluated it against my own labeled scans.
+      </p>
+    </section>
+
+    <!-- PROOF / CASE STUDY -->
+    <section id="proof" data-section="proof">
+      <h2>The eval loop, run live</h2>
+      <p>Three runs. Each one a trace in PostHog. The numbers aren't the point — the
+        <em>diagnosis</em> is.</p>
+      <table class="runs">
+        <thead><tr><th>Run</th><th>Change</th><th>Accuracy</th><th>What the data revealed</th></tr></thead>
+        <tbody>
+          <tr><td>v1</td><td>naive prompt</td><td>42%</td><td>Model called everything <code>reverse</code> — it equated scanner glare with foil.</td></tr>
+          <tr><td>v2</td><td>"glare ≠ foil" prompt</td><td>47%</td><td><code>normal</code> recall doubled. The fix landed exactly where the bias was.</td></tr>
+          <tr><td>v3</td><td>full resolution</td><td>53%</td><td><code>holo</code> still 0% — even at full res.</td></tr>
+        </tbody>
+      </table>
+      <p class="callout">
+        <strong>The finding:</strong> holo is undetectable from flat scans regardless of prompt
+        or resolution — foil only reveals its pattern under angled light. <strong>Evals didn't
+        just tune a prompt; they told me the limiting factor is data capture.</strong> That's
+        the entire value of AI observability, in one true story.
+      </p>
+    </section>
+
+    <!-- THE WEDGE -->
+    <section data-section="wedge">
+      <h2>And here's how I'd sell it</h2>
+      <p class="wedge">
+        Every competitor can only see the AI. <strong>PostHog sees the AI in the context of
+        the product and the user</strong> — because analytics, session replay, flags, and
+        experiments are already in the same project. You can go from "this generation was slow,
+        expensive, or wrong" to "…and here's the user it happened to, what they did next, and
+        whether they churned." Nobody else can close that loop. Full teardown — positioning vs
+        Datadog / LangSmith / Langfuse, the launch plan, and a GEO program for winning
+        "what should I use to monitor my LLM app?" in ChatGPT and Perplexity — is in the repo.
+      </p>
+    </section>
+
+    <!-- WHY ME -->
+    <section data-section="why_me">
+      <h2>Why me, quickly</h2>
+      <ul class="why">
+        <li><strong>6 years, all developer tools.</strong> PLG + technical GTM, nothing else.</li>
+        <li><strong>Depot: $3M → $11.5M ARR.</strong> Built the growth engine from scratch; leads 139 → 707.</li>
+        <li><strong>AI search visibility is my edge.</strong> GEO/AEO across ChatGPT, Claude, Perplexity, Kagi.</li>
+        <li><strong>I ship code.</strong> This demo, an iOS app, internal tooling — JS/Python, APIs, CLIs.</li>
+        <li><strong>I live in PostHog.</strong> Built attribution + cohorts in it at Depot; the traces behind this page are in my own project.</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:torielstrom@gmail.com?subject=Developer Marketer — let's talk" data-cta="email_footer">Let's talk →</a>
+        <a class="btn" href="https://github.com/torielstrom" data-cta="github_footer" target="_blank" rel="noopener">Read the code</a>
+      </div>
+    </section>
+
+    <!-- THINGS I'VE SHIPPED -->
+    <section data-section="projects">
+      <h2>Things I've shipped</h2>
+      <p>Marketing leader who codes. I build and run real products — product, engineering, and
+        growth, end to end. A sampling:</p>
+      <div class="projects">
+        <div class="proj-card">
+          <h3>ChaseDex</h3>
+          <p class="proj-tag">Pokémon TCG collection tracker</p>
+          <p>An iOS app (live on the App Store), an SEO/affiliate website, and a daily data
+            pipeline that powers both.</p>
+          <p class="proj-tech">React Native/Expo · Cloudflare Workers + R2 · PostHog</p>
+          <p class="proj-links">
+            <a href="https://chasedex.com" data-cta="proj_chasedex_web" target="_blank" rel="noopener">chasedex.com</a> ·
+            <a href="https://apps.apple.com/app/id6758054613" data-cta="proj_chasedex_app" target="_blank" rel="noopener">App Store</a>
+          </p>
+        </div>
+        <div class="proj-card">
+          <h3>DropSync</h3>
+          <p class="proj-tag">Pokémon drop-timing tool</p>
+          <p>A live product-drop calendar plus a millisecond-accurate refresh "sniper" Chrome
+            extension — with accounts and Stripe billing.</p>
+          <p class="proj-tech">Chrome MV3 extension · Cloudflare Workers / KV / D1 · Stripe</p>
+          <p class="proj-links">
+            <a href="https://dropsync.chasedex.com" data-cta="proj_dropsync" target="_blank" rel="noopener">dropsync.chasedex.com</a>
+          </p>
+        </div>
+        <div class="proj-card">
+          <h3>SmartHair</h3>
+          <p class="proj-tag">AI hair-care iOS app</p>
+          <p>Personalized AI recommendations with subscription billing — shipped solo, product
+            through growth.</p>
+          <p class="proj-tech">React Native/Expo · RevenueCat · custom AI</p>
+          <p class="proj-links">
+            <a href="https://trysmarthair.com" data-cta="proj_smarthair" target="_blank" rel="noopener">trysmarthair.com</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RÉSUMÉ -->
+    <section data-section="resume">
+      <div class="resume-head">
+        <h2>The résumé</h2>
+        <a class="btn" href="tori-elstrom-resume.pdf" data-cta="download_resume" download>Download PDF ↓</a>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-meta"><strong>Depot</strong> · Head of Growth Marketing <span>2025–Present · Remote</span></div>
+        <ul>
+          <li>Joined at $3M ARR; built the growth engine that drove the business to <strong>$11.5M ARR</strong> (path to $30M).</li>
+          <li>Monthly leads <strong>139 → 707 (5.1×)</strong>, paid acquisition <strong>34 → 137 (4×)</strong> in year one, across a $1.3M budget.</li>
+          <li>Led GTM launch of Depot CI; built a developer PLG engine (technical content, creator programs, AI-search visibility, lifecycle).</li>
+          <li>Built attribution + cohort analysis systems <strong>in PostHog</strong> — the company's first clear view of what drove revenue.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-meta"><strong>Microblink</strong> · Senior Manager, Performance Revenue Marketing <span>2022–2025 · Remote</span></div>
+        <ul>
+          <li>Generated <strong>$1M inbound pipeline in a single month</strong> via technical product-positioning campaigns.</li>
+          <li>Improved marketing efficiency <strong>85%</strong>; organic conversion <strong>16.75% → 27.65%</strong> via technical SEO + CRO.</li>
+          <li>Built full-funnel attribution connecting product usage, acquisition, and sales pipeline.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-meta"><strong>Ascent Conference</strong> · Senior Growth Marketing Manager <span>2021–2022 · Remote</span></div>
+        <ul>
+          <li>Email campaigns at <strong>65% open rates</strong> across 20,000+ attendees; partnered with C-level sponsors (G2, ZoomInfo, Vidyard).</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-meta"><strong>Revenue Zen</strong> · Growth Manager <span>2020–2021 · Remote</span></div>
+        <ul>
+          <li>Improved lead retention <strong>65%</strong>, consistently beat quota; authored reporting + campaign playbooks.</li>
+        </ul>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-meta"><strong>Skills</strong></div>
+        <p class="resume-skills">PLG acquisition · developer marketing · technical content · lifecycle &amp; activation · demand gen · creator/influencer programs · <strong>AI search visibility (GEO/AEO)</strong> · attribution modeling · cohort analysis · <strong>PostHog</strong> · HubSpot · A/B testing · CRO · JavaScript · Python · GitHub/APIs/CLI · shipped iOS app · $1.3M budget ownership</p>
+      </div>
+
+      <div class="resume-job">
+        <div class="resume-meta"><strong>Education</strong></div>
+        <p class="resume-skills">B.S., Communication Sciences and Disorders — Illinois State University. <span style="color:var(--muted)">(Selected projects above.)</span></p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:torielstrom@gmail.com?subject=Developer Marketer — let's talk" data-cta="email_resume">Hire me →</a>
+        <a class="btn" href="tori-elstrom-resume.pdf" data-cta="download_resume_footer" download>Download PDF ↓</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- The transparency gag: live mirror of what's being sent to PostHog -->
+  <aside id="ph-panel" aria-live="polite">
+    <div class="ph-head"><span class="dot"></span> Live: what PostHog just captured</div>
+    <ul id="ph-events"></ul>
+    <div class="ph-foot">Real events, your session. <a href="#" id="ph-optout">opt out</a></div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
