@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GTM teardown — PostHog AI observability · Tori Elstrom</title>
+  <meta name="description" content="A go-to-market teardown for PostHog AI observability: competitive positioning vs Datadog/LangSmith/Langfuse, the launch plan, and a GEO program — with a real demo as proof." />
+  <link rel="preconnect" href="https://us.i.posthog.com" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording capturing isAutocaptureEnabled".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_VyxolBjFW9QqiA1IMSSpmoWKiIvsGCPHkuSdxxQ5ccm', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+</head>
+<body>
+  <main class="doc">
+    <p class="kicker"><a href="../" data-cta="teardown_back">← Tori 1.0</a> · GTM teardown</p>
+    <h1>PostHog AI observability — a GTM teardown</h1>
+    <p class="lede">A go-to-market take for the Developer Marketer (AI observability) role. The
+      companion working demo is in <a href="https://github.com/torielstrom/hire-tori" data-cta="teardown_repo" target="_blank" rel="noopener">the repo</a>;
+      the traces it produced are in PostHog right now.</p>
+
+    <h2>TL;DR</h2>
+    <p>AI observability is a land-grab happening <strong>inside</strong> an analytics platform
+      PostHog already owns the developer relationship for. The winning move isn't to out-feature
+      LangSmith on trace UIs — it's to make the case that <strong>the AI is just another part of
+      your product, and it belongs in the same tool as the rest of it.</strong> PostHog is the
+      only serious player that can say that truthfully. Everything below is built around that wedge.</p>
+
+    <h2>1. The market, in one paragraph</h2>
+    <p>Every team building with LLMs hits the same wall: the app is non-deterministic, "bugs" look
+      like slightly-wrong prose, and cost balloons invisibly per token. They reach for tooling to
+      record and inspect every model call — traces, token/cost, latency, and increasingly
+      <strong>evals</strong> (is the output actually good?). That category is "AI observability."
+      It's early, the buyer is a developer, and no one has won it yet.</p>
+
+    <h2>2. The competitive set (and PostHog's wedge)</h2>
+    <p class="muted-note">Current as of June 2026; funding/acquisition facts independently verified.
+      The category is hot and consolidating fast — context that helps PostHog's pitch.</p>
+    <div class="tablewrap">
+    <table class="runs">
+      <thead><tr><th>Player</th><th>Status / 2025–26</th><th>Pricing</th><th>PostHog's honest counter</th></tr></thead>
+      <tbody>
+        <tr><td><strong>LangSmith</strong> (LangChain)</td><td>$125M Series B, Oct 2025, <strong>$1.25B</strong> (unicorn). Pulls hardest for all-in-LangChain shops.</td><td>Developer $0; Plus $39/seat/mo; Enterprise custom.</td><td>Point solution in a silo. PostHog ties the trace to the real user session, the funnel it moved, and an A/B test behind a flag — without leaving the tool.</td></tr>
+        <tr><td><strong>Langfuse</strong></td><td>OSS (MIT); <strong>acquired by ClickHouse, Jan 2026</strong> (alongside ClickHouse's $400M Series D). OTel-native.</td><td>Hobby free; Core $29/mo; Pro $199/mo; self-host free.</td><td>PostHog is also OSS + developer-first, but arrives with analytics, replay, flags, experiments attached — and Langfuse now serves ClickHouse's agenda.</td></tr>
+        <tr><td><strong>Helicone</strong></td><td>Proxy/gateway (YC W23). <strong>Acquired by Mintlify, Mar 2026 — maintenance mode, feature dev ended.</strong></td><td>Hobby free; Pro $79/mo; Team $799/mo.</td><td><strong>Vendor-risk wedge:</strong> a tool in maintenance mode is a dead end. PostHog is independent and building this as a first-class, ongoing product.</td></tr>
+        <tr><td><strong>Arize / Phoenix</strong></td><td>$70M Series C, Feb 2025. Phoenix OSS is the eval core; Arize AX is the enterprise SaaS.</td><td>Phoenix free; AX Pro $50/mo; Enterprise ~$60k/yr.</td><td>Built for <strong>ML engineers</strong>, not product engineers shipping features. Tells you how the model behaves, nothing about adoption/retention.</td></tr>
+        <tr><td><strong>Braintrust</strong></td><td>$80M Series B, Feb 2026, <strong>~$800M</strong> (ICONIQ, a16z, Greylock). Eval-to-production loop.</td><td>Starter $0; Pro $249/mo; Enterprise custom.</td><td>Standalone AI-only tool, billed separately on data/score volume, disconnected from product impact.</td></tr>
+        <tr><td><strong>Datadog</strong> LLM / Agent Obs</td><td>The enterprise "bolt AI onto APM" play (the "billion-dollar competitor"); hard push into agents.</td><td>Usage-based: ~$8 / 10K LLM spans (≈$480/mo at 500K) + free tier.</td><td>Datadog correlates AI with <em>infra</em>; PostHog correlates it with the <em>user and product</em>. Datadog sells to ops; PostHog to the person who built the feature — at a fraction of the price.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>Two market facts to weaponize:</strong></p>
+    <ol>
+      <li><strong>Consolidation is underway</strong> (Langfuse→ClickHouse, Helicone→Mintlify). Point tools are getting absorbed into bigger agendas. "Pick the platform building this as a core product, not a feature it acquired" is a true, current message.</li>
+      <li><strong>Pricing edge is real.</strong> PostHog = <strong>100k LLM events/mo free, then $0.00006/event</strong> (~10× cheaper) vs Braintrust's $249/mo Pro and Datadog's ~$8/10K-span usage pricing.</li>
+    </ol>
+    <p class="wedge"><strong>The one-sentence wedge:</strong> Every competitor can only see the AI.
+      PostHog sees the AI in the context of the actual product and the actual user — because the
+      same project already has product analytics, session replay, feature flags, and experiments.
+      You go from "this generation was slow/expensive/wrong" to "…and here's the user it happened
+      to, what they did next, and whether they churned." Nobody else can close that loop.</p>
+
+    <h2>3. Positioning &amp; messaging</h2>
+    <ul class="why">
+      <li><strong>Category line:</strong> "AI observability that lives where your product already does."</li>
+      <li><strong>For the skeptic</strong> (on LangSmith/Langfuse): "Keep your traces. But your AI feature lives in a product you're already measuring. Stop stitching two tools together."</li>
+      <li><strong>For the greenfield team:</strong> "You'll need analytics, flags, experiments, and AI observability anyway. Start with the one tool that has all four — instrument once."</li>
+      <li><strong>Anti-pattern to avoid:</strong> competing on trace-viewer aesthetics. Compete on integration of context, not the trace UI.</li>
+    </ul>
+
+    <h2>4. The launch plan (zero-to-done)</h2>
+    <ol>
+      <li><strong>Hero artifact — a build, not a blog.</strong> An "instrument a real AI feature in 15 minutes" repo + post (this demo is the template).</li>
+      <li><strong>The wedge demo:</strong> a 90-second clip from an <code>$ai_generation</code> trace → the same person's session replay and product events. Lead with it.</li>
+      <li><strong>Eval-story content:</strong> "We found our AI's failure mode with evals" — reproducible teardowns (mine on finish detection is one).</li>
+      <li><strong>Co-marketing</strong> with an adjacent AI dev tool (agent framework, vector DB, eval lib): a joint "instrument X with PostHog" guide.</li>
+      <li><strong>Beta → adoption:</strong> ship weekly, announce each improvement as its own small launch, instrument docs/onboarding to see where activation drops.</li>
+    </ol>
+
+    <h2>5. The GEO / AI-search angle (my specialty)</h2>
+    <p>Developers increasingly discover tools by <strong>asking an LLM</strong>, not Googling.
+      "What should I use to monitor my LLM app?" is now answered by ChatGPT/Claude/Perplexity — and
+      those answers are shaped by what's legible to models. I'd own a deliberate <strong>GEO
+      program</strong>: comparison/alternative pages written to be cited by models; canonical,
+      code-first docs an LLM can quote verbatim; and tracking <strong>share-of-voice in LLM
+      answers</strong>, not just search rank. Exactly what I built at Depot across
+      ChatGPT/Claude/Perplexity/Kagi.</p>
+
+    <h2>6. Proof: I used the product to find a real bug</h2>
+    <p>I built finish detection for my Pokémon card pipeline (normal / holo / reverse — which sets
+      the price) with Claude vision, wrapped in PostHog AI observability, evaluated against real
+      labeled scans:</p>
+    <table class="runs">
+      <thead><tr><th>Run</th><th>Change</th><th>Accuracy</th><th>What the data showed</th></tr></thead>
+      <tbody>
+        <tr><td>v1</td><td>naive prompt</td><td>42%</td><td>Model shoved everything into <code>reverse</code> — its traces showed it equated scanner glare with foil.</td></tr>
+        <tr><td>v2</td><td>"glare ≠ foil" prompt</td><td>47%</td><td><code>normal</code> recall doubled. The fix landed exactly where the bias was.</td></tr>
+        <tr><td>v3</td><td>full resolution</td><td>53%</td><td><code>holo</code> still 0% — even at full res.</td></tr>
+      </tbody>
+    </table>
+    <p class="callout"><strong>The finding:</strong> holo is undetectable from flat scans regardless
+      of prompt or resolution — foil only reveals its pattern under angled light. <strong>Evals
+      didn't just tune a prompt; they told me the limiting factor is data capture.</strong> That's
+      the entire value proposition of AI observability in one true story — and the kind of content
+      I'd publish to sell it.</p>
+
+    <h2>7. How I'd measure the launch</h2>
+    <ul class="why">
+      <li><strong>Activation:</strong> % of new AI-observability projects that send a 2nd-day trace.</li>
+      <li><strong>The wedge in action:</strong> how many AI-obs adopters also view a linked session replay / product insight.</li>
+      <li><strong>GEO share-of-voice:</strong> citation rate in LLM answers to "best LLM observability tool."</li>
+      <li><strong>Cost-to-value:</strong> time-from-signup-to-first-trace. If it's not minutes, onboarding is the bug.</li>
+    </ul>
+
+    <div class="cta-row">
+      <a class="btn primary" href="mailto:torielstrom@gmail.com?subject=AI observability — let's talk" data-cta="teardown_email">Hire me →</a>
+      <a class="btn" href="../" data-cta="teardown_home">Back to the demo</a>
+    </div>
+    <p class="muted-note">Competitor facts verified June 2026; sources in
+      <a href="https://github.com/torielstrom/hire-tori/blob/main/teardown/competitor-research.json" target="_blank" rel="noopener">competitor-research.json</a>.
+      Funding/pricing move fast — re-check before reuse.</p>
+  </main>
+  <script>
+    // light instrumentation for the teardown page
+    document.querySelectorAll("[data-cta]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        try { window.posthog && window.posthog.capture("cta_clicked", { cta: el.getAttribute("data-cta"), page: "teardown" }); } catch (e) {}
+      });
+    });
+  </script>
+</body>
+</html>

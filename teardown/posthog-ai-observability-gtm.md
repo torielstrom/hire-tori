@@ -41,15 +41,16 @@ PostHog's pitch, not hurts it._
 | **Helicone** | Proxy/gateway model (YC W23). **Acquired by Mintlify, Mar 2026 — cloud product now in maintenance mode, no new features.** | Hobby free; Pro $79/mo; Team $799/mo (may change under Mintlify). | **Vendor-risk wedge:** a tool in maintenance mode is a dead end. PostHog is independent and building AI observability as a first-class, ongoing product. |
 | **Arize / Phoenix** | **$70M Series C, Feb 2025.** Phoenix OSS is the eval-rigor core; Arize AX is the enterprise SaaS. | Phoenix free; AX Pro $50/mo; Enterprise ~$60k/yr (cited). | Built for **ML engineers**, not product engineers shipping features. It tells you how the model behaves, nothing about whether users adopt/convert/retain. |
 | **Braintrust** | **$80M Series B, Feb 2026, ~$800M valuation** (ICONIQ, a16z, Greylock). Eval-to-production loop. | Starter $0; Pro **$249/mo**; Enterprise custom. | Standalone AI-only tool, billed separately on data/score volume, disconnected from product impact. PostHog folds eval regressions into the same place you watch users. |
-| **Datadog LLM / Agent Observability** | The enterprise "bolt AI onto APM" play (the JD's "billion-dollar competitor"); pushing hard into agent observability. | Free (40k spans); Pro **$160/mo** + overage. | Datadog correlates AI with *infra*; PostHog correlates it with the *user and the product*. Datadog sells to ops; PostHog sells to the person who built the feature — at a fraction of the price. |
+| **Datadog LLM / Agent Observability** | The enterprise "bolt AI onto APM" play (the JD's "billion-dollar competitor"); pushing hard into agent observability. | Usage-based: ~**$8 per 10K LLM spans** (annual; ≈$480/mo at 500K spans) + a free tier. | Datadog correlates AI with *infra*; PostHog correlates it with the *user and the product*. Datadog sells to ops; PostHog sells to the person who built the feature — at a fraction of the price. |
 
 **Two market facts to weaponize:**
 1. **Consolidation is underway** (Langfuse→ClickHouse, Helicone→Mintlify). Point tools are
    getting absorbed into bigger agendas. "Pick the platform that's building this as a core
    product, not a feature it acquired" is a real, current message.
 2. **Pricing edge is real.** PostHog gives **100k LLM events/month free, then $0.00006/event**
-   and is ~10x cheaper than dedicated tools — versus $160–$249/mo entry points at Datadog and
-   Braintrust. For startups (PostHog's base), that's decisive.
+   and is ~10x cheaper than dedicated tools — versus Braintrust's **$249/mo** Pro tier and
+   Datadog's usage-based LLM pricing (~$8 per 10K spans, ≈$480/mo at 500K). For startups
+   (PostHog's base), that's decisive.
 
 **The one-sentence wedge:** _Every competitor can only see the AI. PostHog sees the AI in the
 context of the actual product and the actual user_ — because the same project already has

@@ -54,6 +54,13 @@ ul.why { list-style: none; padding: 0; margin: 0 0 8px; }
 ul.why li { padding: 10px 0 10px 26px; position: relative; border-bottom: 1px solid var(--line); }
 ul.why li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
 
+/* teardown doc page */
+.muted-note { color: var(--muted); font-size: 13px; }
+.tablewrap { overflow-x: auto; margin: 16px 0; }
+.doc h2 { margin-top: 44px; }
+.doc ol { padding-left: 20px; }
+.doc ol li { margin: 8px 0; color: #cbcfd6; }
+
 /* projects */
 .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
 .proj-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
